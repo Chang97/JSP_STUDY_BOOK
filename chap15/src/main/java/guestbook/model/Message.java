@@ -31,5 +31,12 @@ public class Message {
 		this.message = message;
 	}
 	
+	public boolean hasPassword() {
+		return password != null && !password.isEmpty();
+	}
+	
+	public boolean matchPassword(String pwd) {
+		return password != null && password.equals(pwd);
+	}
 	
 }
