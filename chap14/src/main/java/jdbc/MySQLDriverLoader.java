@@ -4,7 +4,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
-public class MySQLDriberLoader extends HttpServlet{
+public class MySQLDriverLoader extends HttpServlet{
 	public void init(ServletConfig config) throws ServletException {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
