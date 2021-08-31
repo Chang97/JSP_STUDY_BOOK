@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.command.CommandHandler;
 import mvc.command.NullHandler;
 
-public class ControllerUsingFile extends HttpServlet {
+public class ControllerUsingURI extends HttpServlet {
 	private Map<String, CommandHandler> commandHandlerMap = new HashMap<String, CommandHandler>();
 
 	public void init() throws ServletException {
@@ -57,7 +57,10 @@ public class ControllerUsingFile extends HttpServlet {
 
 	protected void process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String command = request.getParameter("cmd");
+		String command = request.getRequestURI();
+		if (command.indexOf(request.getContextPath()) == 0) {
+			command = command.substring(request.getContextPath().length());
+		}
 		CommandHandler handler = commandHandlerMap.get(command);
 		// System.out.println(commandHandlerMap.get(command));
 		if (handler == null) {
