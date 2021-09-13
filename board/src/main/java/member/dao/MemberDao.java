@@ -42,7 +42,7 @@ public class MemberDao {
 	
 	public void insert(Connection conn, Member mem) throws SQLException {
 		try(PreparedStatement pstmt = 
-				conn.prepareStatement("insert intp member values (?,?,?,?)")) {
+				conn.prepareStatement("insert into member values (?,?,?,?)")) {
 			pstmt.setString(1, mem.getId());
 			pstmt.setString(2, mem.getName());
 			pstmt.setString(3, mem.getPassword());
