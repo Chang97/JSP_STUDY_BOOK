@@ -8,6 +8,7 @@ public class Member {
 	private String name;
 	private String password;
 	private Date regDate;
+	
 	public Member(String id, String name, String password, Date regDate) {
 		this.id = id;
 		this.name = name;
@@ -29,6 +30,10 @@ public class Member {
 	}
 	public boolean matchPassword(String pwd) {
 		return password.equals(pwd);
+	}
+	
+	public void changePassword(String newPwd) {
+		this.password = newPwd;
 	}
 	
 }
