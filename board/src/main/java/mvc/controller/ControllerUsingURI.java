@@ -62,7 +62,6 @@ public class ControllerUsingURI extends HttpServlet {
 			command = command.substring(request.getContextPath().length());
 		}
 		CommandHandler handler = commandHandlerMap.get(command);
-		// System.out.println(commandHandlerMap.get(command));
 		if (handler == null) {
 			handler = new NullHandler();
 		}

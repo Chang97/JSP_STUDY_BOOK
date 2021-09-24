@@ -30,8 +30,8 @@
 	<c:set var="pageNo" value="${empty param.pageNo ? '1' : param.pageNo}" />
 		<a href="list.do?pageNo=${pageNo}">[목록]</a>
 		<c:if test="${authUser.id == articleData.article.writer.id }">
-		<a href="mpdify.do?no="${articleData.article.number }">[게시글 수정]</a>
-		<a href="delete.do?no="${articleData.article.number }">[게시글 삭제]</a>
+		<a href="modify.do?no=${articleData.article.number }">[게시글 수정]</a>
+		<a href="delete.do?no=${articleData.article.number }">[게시글 삭제]</a>
 		</c:if>
 	</td>
 </tr>

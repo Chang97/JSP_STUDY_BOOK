@@ -32,8 +32,6 @@ public class ArticlePage {
 			endPage = startPage + 4;
 			if (endPage > totalPages) endPage = totalPages;
 		}
-		
-		System.out.println("afakjlfdkjlfdlj;fsdajsfdaj;llkj;\n" + startPage);
 	}
 
 	public int getTotal() {

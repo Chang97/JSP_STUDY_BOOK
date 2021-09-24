@@ -53,5 +53,17 @@ public class ArticleContentDao {
 		}
 	}
 	
+	public int update(Connection conn, int no, String content) throws SQLException {
+		try (PreparedStatement pstmt = 
+				conn.prepareStatement(
+						"update article_content set content = ? " +
+						"where article_no = ?")){
+			pstmt.setString(1, content);
+			pstmt.setInt(2, no);
+			return pstmt.executeUpdate();
+		}
+				
+	}
+	
 
 }
