@@ -33,5 +33,25 @@ public class ArticleContentDao {
 		}
 	}
 	
+	public ArticleContent selectById(Connection conn, int no) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(
+					"select * from article_content where article_no = ?");
+			pstmt.setInt(1, no);
+			rs= pstmt.executeQuery();
+			ArticleContent articleContent = null;
+			if (rs.next()) {
+				articleContent = new ArticleContent(
+						rs.getInt("article_no"), rs.getString("content"));
+			}
+			return articleContent;
+		} finally {
+			jdbcUtil.close(rs);
+			jdbcUtil.close(pstmt);
+		}
+	}
+	
 
 }

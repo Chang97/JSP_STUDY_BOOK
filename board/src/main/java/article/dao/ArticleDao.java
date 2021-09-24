@@ -107,4 +107,33 @@ public class ArticleDao {
 	private Date toDate(Timestamp timestamp) {
 		return new Date(timestamp.getTime());
 	}
+	
+	public Article selectById (Connection conn, int no) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(
+					"select * from article where article_no = ?");
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			Article article = null;
+			if (rs.next()) {
+				article = convertArticle(rs);
+			}
+			return article;
+		} finally {
+			jdbcUtil.close(rs);
+			jdbcUtil.close(pstmt);
+		}
+	}
+	
+	public void increaseReadCount(Connection conn, int no) throws SQLException {
+		try (PreparedStatement pstmt = 
+				conn.prepareStatement(
+						"update article set read_cnt = read_cnt + 1 " + 
+						"where article_no = ?")) {
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+		}
+	}
 }
