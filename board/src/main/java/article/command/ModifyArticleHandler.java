@@ -65,8 +65,6 @@ public class ModifyArticleHandler implements CommandHandler {
 		throws Exception {
 		User authUser = (User) req.getSession().getAttribute("authUser");
 		String noVal = req.getParameter("no");
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		System.out.println(noVal);
 		int no = Integer.parseInt(noVal);
 		
 		ModifyRequest modReq = new ModifyRequest(authUser.getId(), no,
